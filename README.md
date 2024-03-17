@@ -1,13 +1,8 @@
-# Events API in InNoHassle ecosystem
+# Events API | InNoHassle ecosystem
 
-> Trust the system more than the memory
+> https://api.innohassle.ru/events
 
-[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg) ](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/Python-3.11-blue?style=flat&logo=Python) ](https://www.python.org/downloads/release/python-3110/)
-[![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/)
-
-[![GitHub Actions pytest](https://img.shields.io/github/actions/workflow/status/one-zero-eight/InNoHassle-Events/pytest.yml?label=pytest)](https://github.com/one-zero-eight/InNoHassle-Events/actions)
-[![GitHub Actions pre-commit](https://img.shields.io/github/actions/workflow/status/one-zero-eight/InNoHassle-Events/pre-commit.yml?label=pre-commit)](https://github.com/one-zero-eight/InNoHassle-Events/actions)
+[![GitHub Actions pre-commit](https://img.shields.io/github/actions/workflow/status/one-zero-eight/InNoHassle-Events/pre-commit.yaml?label=pre-commit)](https://github.com/one-zero-eight/InNoHassle-Events/actions)
 
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=one-zero-eight_InNoHassle-Events&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=one-zero-eight_InNoHassle-Events)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=one-zero-eight_InNoHassle-Events&metric=bugs)](https://sonarcloud.io/summary/new_code?id=one-zero-eight_InNoHassle-Events)
@@ -15,53 +10,37 @@
 
 ## Table of contents
 
-GitHub supports table of
-contents [by default](https://github.blog/changelog/2021-04-13-table-of-contents-support-in-markdown-files/).
+Did you know that GitHub supports table of
+contents [by default](https://github.blog/changelog/2021-04-13-table-of-contents-support-in-markdown-files/) 🤔
 
-## Project description
+## About
 
-This is the API for events in InNoHassle ecosystem. It is written in Python 3.11
-using [FastAPI](https://fastapi.tiangolo.com/).
+This is the API for events service in InNoHassle ecosystem.
 
-### Features list
+### Features
 
-1. Aggregate Events from Various Sources:
-    - Core courses schedule from the Google Spreadsheet table
-    - Elective courses schedule from another Google Spreadsheet table
-    - Sports classes schedule from the [website](https://sport.innopolis.university)
-    - Dorm cleaning schedule from the [website](https://hotel.innopolis.university/studentaccommodation/)
-    - [InNoHassle-MusicRoom](https://github.com/one-zero-eight/InNoHassle-MusicRoom) schedule (general and personal
-      view)
-    - _Moodle homework and events (in progress)_
-2. Personalize your schedule
-    - Favourites Management
-        - Add schedules to your favorites for easy tracking and quick access
-        - Effortlessly manage your favorite events and keep track of them
-    - Hide or unhide your groups based on your preference
-        - Hidden groups are not visible in the dashboard calendar and are not included in the schedule but can be
-          easily unhidden
-    - Predefined schedules based on your identity
-        - Automatically include your core courses and electives
-        - Automatically include your bookings
-          from [InNoHassle-MusicRoom](https://github.com/one-zero-eight/InNoHassle-MusicRoom)
-        - _Automatically include your sports classes checkins (in progress)_
-3. Export your schedule to any calendar application
-    - Supports popular calendar file format .ics for easy integration with different applications
-    - Export requires key-based authentication to ensure the security of the user's data
-4. User Authentication
-    - Seamless user authentication flow with Innopolis University SSO
-    - Secure and reliable authentication process
-    - User data is stored securely and is not shared with any third-party
+- 📅 Event Aggregation
+    - 📚 [Core and Elective Courses](https://eduwiki.innopolis.university/index.php/All:Schedule)
+    - 🏋️ [Sports Classes](https://sport.innopolis.university)
+    - 🧹 [Dorm Cleaning](https://hotel.innopolis.university/studentaccommodation/)
+    - 🎵 [Music Room Booking](https://innohassle.ru/music-room)
+    - 📖 [Moodle Events](https://moodle.innopolis.university/) _(in progress)_
+- 🌟 Personalized Schedule
+    - ⭐ Favorites Management
+    - 👀 Hide/Unhide Groups
+    - 🆔 Automatically add schedule based on your identity
+- 🔄 Schedule Export
+    - 🗓️ Schedule in [.ics format](https://icalendar.org/) to import into your calendar app
 
-### Demo
+### Technologies
 
-You can test our product here [InNoHassle](https://innohassle.ru/schedule).
-And see an api deployed
-version [here](https://api.innohassle.ru/events/v0/auth/innopolis/login?return_to=/events/v0/docs).
-
-The background part of our API:
-
-https://github.com/one-zero-eight/InNoHassle-Events/assets/104205787/8e519e69-7a2e-4507-9087-6b4e81e5266d
+- [Python 3.11](https://www.python.org/downloads/release/python-3117/) & [Poetry](https://python-poetry.org/docs/)
+- [FastAPI](https://fastapi.tiangolo.com/) & [Pydantic](https://docs.pydantic.dev/latest/)
+- Database and ORM: [PostgreSQL](https://www.postgresql.org/), [SQLAlchemy](https://www.sqlalchemy.org/),
+  [Alembic](https://alembic.sqlalchemy.org/en/latest/)
+- Formatting and linting: [Ruff](https://docs.astral.sh/ruff/), [pre-commit](https://pre-commit.com/)
+- Deployment: [Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/),
+  [GitHub Actions](https://github.com/features/actions)
 
 ## Development
 
@@ -69,40 +48,55 @@ https://github.com/one-zero-eight/InNoHassle-Events/assets/104205787/8e519e69-7a
 
 1. Install [Python 3.11+](https://www.python.org/downloads/release/python-3117/)
 2. Install [Poetry](https://python-poetry.org/docs/)
-3. Install project dependencies with [poetry](https://python-poetry.org/docs/cli/#options-2).
-    ```bash
-    poetry install --no-root
-    ```
+3. Install project dependencies with [Poetry](https://python-poetry.org/docs/cli/#options-2).
+   ```bash
+   poetry install --no-root --with code-style
+   ```
 4. Set up [pre-commit](https://pre-commit.com/) hooks:
 
-    ```bash
-    poetry run pre-commit install --install-hooks -t pre-commit -t commit-msg
-    ```
+   ```bash
+   poetry run pre-commit install --install-hooks -t pre-commit -t commit-msg
+   ```
 5. Set up project settings file (check [settings.schema.yaml](settings.schema.yaml) for more info).
-    ```bash
-    cp settings.example.yaml settings.yaml
-    ```
+   ```bash
+   cp settings.example.yaml settings.yaml
+   ```
    Edit `settings.yaml` according to your needs.
 6. Set up a [PostgreSQL](https://www.postgresql.org/) database instance.
+   <details>
+    <summary>Using docker container</summary>
+
     - Set up database settings for [docker-compose](https://docs.docker.com/compose/) container
       in `.env` file:х
-        ```bash
-        cp .env.example .env
-        ```
+      ```bash
+      cp .env.example .env
+      ```
+    - Set up a network for music room service if you have not done it yet.
+      ```bash
+      docker network create music-room
+      ```
     - Run the database instance:
-        ```bash
-        docker compose up -d db
-        ```
-    - Make sure to set up the actual database connection in `settings.yaml` before running the upgrade command.
-    - Upgrade the database schema using [alembic](https://alembic.sqlalchemy.org/en/latest/):
-         ```bash
-         poetry run alembic upgrade head
-         ```
+      ```bash
+      docker compose up -d db
+      ```
+    - Make sure to set up the actual database connection in `settings.yaml`, for example:
+      ```yaml
+      db_url: postgresql+asyncpg://postgres:postgres@localhost:5432/postgres
+      ```
 
-> [!NOTE]
-> You can use [pgAdmin](https://www.pgadmin.org/) to run and manage your database.
+   </details>
+   <details>
+    <summary>Using pgAdmin</summary>
 
-Set up PyCharm integrations:
+    - Connect to the PostgreSQL server using pgAdmin
+    - Set up a new database in the server: `Edit > New Object > New database`
+    - Use the database name in `settings.yaml` file, for example `innohassle-events`:
+      ```yaml
+      db_url: postgresql+asyncpg://postgres:your_password@localhost:5432/innohassle-events
+      ```
+   </details>
+
+**Set up PyCharm integrations**
 
 1. Ruff ([plugin](https://plugins.jetbrains.com/plugin/20574-ruff)).
    It will lint and format your code. Make sure to enable `Use ruff format` option in plugin settings.
@@ -114,20 +108,36 @@ Set up PyCharm integrations:
 ### Run for development
 
 1. Run the database if you have not done it yet
-    ```bash
-    docker compose up -d db
-    ```
-   OR do it manually
-2. Run the ASGI server
-    ```bash
-    poetry run python -m src.api
-    ```
+2. Upgrade the database schema using [alembic](https://alembic.sqlalchemy.org/en/latest/):
+   ```bash
+   poetry run alembic upgrade head
+   ```
+3. Run the ASGI server
+   ```bash
+   poetry run python -m src.api
+   ```
    OR using uvicorn directly
-    ```bash
-    poetry run uvicorn src.api.app:app --use-colors --proxy-headers --forwarded-allow-ips=*
-    ```
+   ```bash
+   poetry run uvicorn src.api.app:app --use-colors --proxy-headers --forwarded-allow-ips=*
+   ```
 
 Now the API is running on http://localhost:8000. Good job!
+
+### Deployment
+
+We use Docker with Docker Compose plugin to run the website on servers.
+
+1. Copy the file with environment variables: `cp .env.example .env`
+2. Change environment variables in the `.env` file
+3. Copy the file with settings: `cp settings.example.yaml settings.yaml`
+4. Change settings in the `settings.yaml` file according to your needs
+   (check [settings.schema.yaml](settings.schema.yaml) for more info)
+5. Install Docker with Docker Compose
+6. Deploy [Music room service](https://github.com/one-zero-eight/InNoHassle-MusicRoom)
+   > Or just create a network for the music room service: `docker network create music-room`
+7. Build a Docker image: `docker compose build --pull`
+8. Run the container: `docker compose up --detach`
+9. Check the logs: `docker compose logs -f`
 
 ## FAQ
 
@@ -142,3 +152,9 @@ Project dependencies
 Pre-commit hooks
 
 1. Run `poetry run pre-commit autoupdate`
+
+## Contributing
+
+We are open to contributions of any kind.
+You can help us with code, bugs, design, documentation, media, new ideas, etc.
+If you are interested in contributing, please read our [contribution guide](https://github.com/one-zero-eight/.github/blob/main/CONTRIBUTING.md).
